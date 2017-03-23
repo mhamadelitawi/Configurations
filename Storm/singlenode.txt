@@ -49,9 +49,16 @@ supervisor.slots.ports:
 $ cd /home/ubuntu/storm/zookeeper-3.4.9
 $ bin/zkServer.sh start
 
+
+#terminal 1
 $ cd /home/ubuntu/storm/apache-storm-1.0.3
 $ bin/storm nimbus
 
+#terminal 2
+$ cd /home/ubuntu/storm/apache-storm-1.0.3
+$ bin/storm supervisor
+
+#terminal 3
 $ cd /home/ubuntu/storm/apache-storm-1.0.3
 $ bin/storm ui
 
