@@ -1,0 +1,60 @@
+Single node:
+
+Appache recomand java7  and python 2.6
+
+#Install jdk 7 : 
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java7-installer
+$ sudo apt-get install oracle-java7-set-default
+
+#Install pythone 2.6
+$ sudo add-apt-repository ppa:fkrull/deadsnakes
+$ sudo apt-get update
+$ sudo apt-get install python2.6
+
+$ mkdir ~/storm
+
+#Download Zookeeper from apache site
+$ tar xvf zookeeper-3.4.9.tar.gz
+$ mv zookeeper-3.4.9 ~/storm
+$ cd zookeeper-3.4.9/
+$ mkdir data
+$ cd conf/
+$ cp zoo_sample.cfg zoo.cfg
+$ gedit zoo.cfg
+tickTime=2000
+dataDir=/home/ubuntu/storm/zookeeper-3.4.9/data
+clientPort=2181
+
+#download storm
+$ tar xvf apache-storm-1.0.3.tar.gz
+$ mv apache-storm-1.0.3 ~/storm/
+$ cd ~/storm/apache-storm-1.0.3/
+$ mkdir data
+$ cd conf/
+$ gedit storm.yaml 
+storm.zookeeper.servers:
+     - "127.0.0.1"
+nimbus.seeds: ["127.0.0.1"]	 
+storm.local.dir: "/home/ubuntu/storm/apache-storm-1.0.3/data"
+supervisor.slots.ports:
+ - 6700
+ - 6701
+ - 6702
+ - 6703
+ 
+ 
+ 
+$ cd /home/ubuntu/storm/zookeeper-3.4.9
+$ bin/zkServer.sh start
+
+$ cd /home/ubuntu/storm/apache-storm-1.0.3
+$ bin/storm nimbus
+
+$ cd /home/ubuntu/storm/apache-storm-1.0.3
+$ bin/storm ui
+
+
+
+
