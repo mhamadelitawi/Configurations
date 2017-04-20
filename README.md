@@ -1,4 +1,4 @@
-Notes on install and completing the initial configuration of some software.
+Notes on installing and completing the initial configuration of some software.
 
 softwares and framework: 
 ========================
